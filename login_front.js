@@ -22,35 +22,34 @@ function ajaxLoginFunction()
                 }
         }
 
-
-
-
-
 	// Create a function that will receive data sent from the server
         ajaxRequest.onreadystatechange = function()
         {
                 if(ajaxRequest.readyState == 4)
                 {
-                        var ajaxDisplay = document.getElementById('ajaxDiv');
-                        var ajaxHiddenDisplay = document.getElementById('ajaxDiv2');
+                        var ajaxDisplay = document.getElementById('ajaxDisplay');
+                        var ajaxHiddenDisplay = document.getElementById('ajaxHiddenDisplay');
                         var message = ajaxRequest.responseText;
 
 
                         if(message.includes("teacher")){
                                 window.open("https://web.njit.edu/~ts355/instructor_view.php");
                                 ajaxHiddenDisplay.innerHTML = message;
+                                alert(message);
                         }
                         if(message.includes("student")){
                                 window.open("https://web.njit.edu/~ts355/student_view.php");
                                 ajaxHiddenDisplay.innerHTML = message;
+                                alert(message);
                         }
                         else{
                              	ajaxDisplay.innerHTML = message;
+                                alert(message);
                         }
                 }
         }
-	
-	        var name = document.getElementById('login:username').value;
+
+	var name = document.getElementById('login:username').value;
         var pass = document.getElementById('login:password').value;
         if (document.getElementById('login:user1').checked){var student = document.getElementById('login:user1').value;}
         else if (document.getElementById('login:user').checked){var teacher = document.getElementById('login:user').value;}
@@ -71,7 +70,6 @@ function ajaxLoginFunction()
 
         ajaxRequest.send(JSON.stringify(myJSONObject));
 }
-
 
 
                                                                              
